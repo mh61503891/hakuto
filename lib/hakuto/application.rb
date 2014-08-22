@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/json'
+require 'sass'
 require 'hakuto/api'
 
 module Hakuto
@@ -7,6 +8,10 @@ module Hakuto
 
     configure :development do
       register Sinatra::Reloader
+    end
+
+    get '/lib/hakuto/index.css' do
+      scss :"style/index"
     end
 
     get '/' do

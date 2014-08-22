@@ -1,0 +1,172 @@
+$app-font-family: Arial, sans-serif;
+
+$app-a-g1-color: #183152;
+$app-a-g2-color: #666688;
+
+$app-z-g1-color: #FEFEFE;
+$app-z-g2-color: #F0F0F0;
+$app-z-g3-color: #E9E9F0;
+
+$app-inspector-back-color: $app-z-g2-color;
+$app-inspector-text-color: $app-a-g1-color;
+$app-inspector-link-color: $app-a-g1-color;
+
+$app-header-back-color: $app-a-g1-color;
+$app-header-text-color: $app-z-g1-color;
+
+$app-stage-back-color: $app-z-g1-color;
+
+$app-cell-rect-default-back-color: $app-z-g1-color;
+$app-cell-path-default-back-color: $app-z-g1-color;
+
+$app-cell-selected-color: $app-a-g1-color;
+$app-cell-cited-color: $app-a-g2-color;
+$app-cell-citing-color: $app-a-g2-color;
+$app-cell-unselected-color: $app-z-g2-color;
+
+$app-path-exist-color: #FD7400;
+$app-path-view-color: #FFE11A;
+$app-path-check-color: #1F8A70;
+$app-path-memo-color: #73BBD9;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: $app-font-family;
+  svg {
+    shape-rendering: crispEdges;
+  }
+}
+
+div#display {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+  svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+g#inspector {
+  rect.container {
+    fill: $app-inspector-back-color;
+    opacity: 0.75;
+  }
+  div.container {
+    color: $app-inspector-text-color;
+    padding-top: 17px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    div.toolbar {
+      font-size: 90%;
+      i {
+        letter-spacing: 12px;
+        cursor: pointer;
+      }
+    }
+    div.content {
+      h1.title {
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
+        font-size: 130%;
+        line-height: 0.95em;
+      }
+      h2.section {
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
+        font-size: 120%;
+      }
+      p.abstract {
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
+        text-align: justify;
+      }
+      table {
+        font-size: 90%;
+        border-spacing: 0;
+        background-color: $app-z-g3-color;
+      }
+      th, td {
+        padding: 0.25em;
+        line-height: 1em;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        white-space: nowrap;
+      }
+      td {
+        width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: $app-inspector-link-color;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+g#header {
+  rect {
+    fill: $app-header-back-color;
+  }
+  text {
+    font-size: 10px;
+    fill: $app-header-text-color;
+  }
+}
+
+g#stage {
+  g.container {
+    rect {
+      fill: $app-stage-back-color;
+    }
+  }
+  g.cell {
+    rect {
+      stroke-width: 0;
+      fill: $app-cell-rect-default-back-color;
+    }
+    path {
+      stroke-width: 0;
+      fill: $app-cell-path-default-back-color;
+    }
+  }
+  // rects
+  g.cell.selected rect {
+    fill: $app-cell-selected-color;
+  }
+  g.cell.cited rect {
+    fill: $app-cell-cited-color;
+  }
+  g.cell.citing rect {
+    fill: $app-cell-citing-color;
+  }
+  g.cell.unselected rect {
+    fill: $app-cell-unselected-color;
+  }
+  // paths
+  g.cell.exist path.existence {
+    fill: $app-path-exist-color;
+  }
+  g.cell.viewed path.view {
+    fill: $app-path-view-color;
+  }
+  g.cell.checked path.check {
+    fill: $app-path-check-color;
+  }
+  g.cell.memoed path.memo {
+    fill: $app-path-memo-color;
+  }
+}

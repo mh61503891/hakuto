@@ -48,45 +48,45 @@ function on_zoom() {
 }
 
 // svg ///////////////////////////////////////////////////////////////////
-var svg = d3.select("div.container").append("svg")
-  .attr("class", "content")
-  .attr("width", layouts.content.width)
-  .attr("height", layouts.content.height)
+var svg = d3.select('div#display').append('svg')
+  .classed('content', true)
+  .attr('width', layouts.content.width)
+  .attr('height', layouts.content.height)
 
 // stage
-var stage = svg.append("g")
-  .append("g")
+var stage = svg.append('g')
+  .attr('id', 'stage')
   .call(zoom)
-  .append("g")
-stage.append("svg:rect")
-  .attr("class", "overlay stage")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", layouts.stage.width)
-  .attr("height", layouts.stage.height)
+  .append('g')
+stage
+  .append('g')
+  .classed('container', true)
+  .append('svg:rect')
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('width', layouts.stage.width)
+  .attr('height', layouts.stage.height)
 
 // header
-var header = svg.append("g")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", layouts.stage.width)
-  .attr("height", layouts.stage.height)
+var header = svg.append('g')
+  .attr('id', 'header')
 
 // inspector
-var inspector = svg.append("g")
-inspector.append("svg:rect")
-  .attr("class", "inspector")
-  .attr("width", layouts.inspector.width)
-  .attr("height", "100%")
-  .attr("x", 0)
-  .attr("y", 0)
-inspector.append("foreignObject")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", layouts.inspector.width)
-  .attr("height", "100%")
-  .append("xhtml:div")
-  .attr("id", "inspector")
+var inspector = svg.append('g')
+  .attr('id', 'inspector')
+inspector.append('svg:rect')
+  .classed('container', true)
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('width', layouts.inspector.width)
+  .attr('height', '100%')
+inspector.append('foreignObject')
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('width', layouts.inspector.width)
+  .attr('height', '100%')
+  .append('xhtml:div')
+  .classed('container', true)
 
 // objects ///////////////////////////////////////////////////////////////
 
@@ -143,23 +143,21 @@ var nodes = new function() {
 
 function init_grid() {
   for (var year = 1970; year <= new Date().getFullYear(); year++) {
-    var column_header = header.append("svg:g")
-      .attr("class", "column-header")
-    column_header.append("svg:rect")
-      .attr("x", function(d) {
+    var cell = header.append('svg:g')
+    cell.append('svg:rect')
+      .attr('x', function(d) {
         return (year - 1970) * layouts.header.width
       })
-      .attr("width", layouts.header.width)
-      .attr("height", layouts.header.height)
-    column_header.append("svg:text")
-      .attr("text-anchor", "middle")
-      .attr("dominant-baseline", "middle")
-      .attr("x", function(d) {
+      .attr('y', 0)
+      .attr('width', layouts.header.width)
+      .attr('height', layouts.header.height)
+    cell.append('svg:text')
+      .attr('x', function(d) {
         return (year - 1970) * layouts.header.width + layouts.header.width * 0.5
       })
-      .attr("y", 0)
-      .attr("width", layouts.header.width * 0.5)
-      .attr("height", layouts.header.height * 0.5)
+      .attr('y', layouts.header.height * 0.5)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
       .text(year)
   }
 }
@@ -398,8 +396,11 @@ function on_select(node) {
 
 function update_inspector(id) {
   if (papers.exist(id)) {
-    $('#inspector').empty()
-    $('#inspector').append($('#inspector-tmpl').tmpl(papers.get(id))).hide().fadeIn(300)
+    var content = $('g#inspector div.container')
+    content.empty()
+    content.append($('#inspector-tmpl').tmpl(papers.get(id))).hide().fadeIn(300)
+    // $('g.inspector div.content#inspector').empty()
+    // $('#inspector').append($('#inspector-tmpl').tmpl(papers.get(id))).hide().fadeIn(300)
   }
 }
 

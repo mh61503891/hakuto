@@ -1,17 +1,16 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
+
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'nokogiri'
 gem 'data_mapper'
-gem 'sinatra-contrib'
-
-# group :production do
-#   gem 'dm-postgres-adapter'
-# end
+gem 'dm-sqlite-adapter'
+gem 'thin'
+gem 'rack'
 
 group :development, :test do
-  gem 'thin'
-  gem 'pry'
-  gem 'dm-sqlite-adapter'
-  gem 'rspec'
+	gem 'sass'
+	gem 'rspec'
+	gem 'pry'
 end

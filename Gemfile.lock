@@ -87,6 +87,7 @@ GEM
     rspec-mocks (3.0.1)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.0)
+    sass (3.4.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -115,7 +116,9 @@ DEPENDENCIES
   dm-sqlite-adapter
   nokogiri
   pry
+  rack
   rspec
+  sass
   sinatra
   sinatra-contrib
   thin
