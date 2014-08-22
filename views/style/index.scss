@@ -84,10 +84,10 @@ g#inspector {
         margin-bottom: 0.25em;
         font-size: 120%;
       }
-      p.abstract {
+      p.text, p.abstract {
         margin-top: 0.25em;
         margin-bottom: 0.25em;
-        text-align: justify;
+        line-height: 0.95em;
       }
       table {
         font-size: 90%;
@@ -105,6 +105,7 @@ g#inspector {
       }
       td {
         width: 100%;
+        word-break: break-all;
       }
       a {
         text-decoration: none;
