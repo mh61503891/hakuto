@@ -56,6 +56,9 @@ module Hakuto
         if params['acm_id'] && !params['acm_id'].empty?
           require 'hakuto/api/acm'
           return Hakuto::API::ACM::Loader.new(Hakuto::API::ACM::Adapter.new).load(params['acm_id'])
+        elsif params['id'] && !params['id'].empty?
+          require 'hakuto/api/system'
+          return Hakuto::API::System::Loader.new(Hakuto::API::System::Adapter.new).load(params['id'])
         else
           raise ArgumentError, "#{params} has no ids"
         end
