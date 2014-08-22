@@ -28,6 +28,7 @@ module Hakuto
           title:@paper.title,
           year:@paper.year,
           abstract:@paper.abstract,
+          text:@paper.text,
           references:Link.all(src_id:@paper.id).map { |link|
             e = link.dst
             {

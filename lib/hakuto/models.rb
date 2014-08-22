@@ -45,7 +45,9 @@ module Hakuto
     end
 
     def text
-      acm_text || ieee_text
+      return acm_text  if acm_status  == :link || acm_status  == :blank
+      return ieee_text if ieee_status == :link || ieee_status == :blank
+      return nil
     end
 
   end
