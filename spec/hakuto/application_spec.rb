@@ -1,23 +1,17 @@
 require 'spec_helper'
-require 'rack/test'
-# require 'json_spec'
 
 describe Hakuto::Application do
-
   include Rack::Test::Methods
-
   def app
     options = {
       root:File.expand_path('../../../', __FILE__)
     }
     Hakuto::Application.set(options)
   end
-
   describe '/' do
     subject { get('/') }
     it { is_expected.to be_ok }
   end
-
   describe '/paper.json' do
     context 'when valid params' do
       it 'returns 200' do
@@ -39,12 +33,5 @@ describe Hakuto::Application do
         expect(get('/paper.json', {type:'piyo', id:1}).status).to eql(400)
       end
     end
-
-    # subject {
-    #   get('/api/papers/', {
-    #         type:'acm',
-    #         id:1
-    #   }).body
-    # }
   end
 end

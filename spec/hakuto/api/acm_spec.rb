@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'rack/test'
 
 include Hakuto::API::ACM
 describe Hakuto::API::ACM do
