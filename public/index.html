@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Hakuto</title>
+  <link rel="stylesheet" href="lib/hakuto/index.css">
+  <link rel="stylesheet" href="lib/font-awesome-4.1.0/css/font-awesome.min.css">
+  <script src="lib/d3-3.4.11.min.js"></script>
+  <script src="lib/jquery-2.1.1.min.js"></script>
+  <script src="lib/jquery.tmpl-1.0.4.js"></script>
+  <script src="lib/jquery.md5-1.2.1.js"></script>
+  <script id="inspector-tmpl" type="text/x-jquery-tmpl">
+    <div class="inspector">
+      <div class="toolbar">
+        <i class="fa fa-lg fa-minus ppp-suyaxa" data-id="${id}"></i>
+        <i class="fa fa-lg fa-question ppp-thundoc" data-id="${id}"></i>
+        <i class="fa fa-lg fa-plus ppp-favo" data-id="${id}"></i>
+      <div class="content">
+        <h1 class="title">${title}</h1>
+        <a class="link" href="${url}" target="_blank">${url}</a>
+        <h2 class="title">Abstract</h2>
+        <p class="abstract">${abstract}</p>
+        <table>
+          <tr><th>Year</th><td>${year}</td></tr>
+          <tr><th>ID</th><td>${id}</td></tr>
+          {%if doi%}
+          <tr><th>DOI</th><td><a href="">${doi}</a></td></tr>
+          {%/if%}
+          {%if acm_id%}
+          <tr><th>ACM</th><td><a href="">http://dl.acm.com/cf?${acm_id}</a></td></tr>
+          {%/if%}
+        </table>
+      </div>
+    </div>
+  </script>
+</head>
+
+<body>
+  <!-- <div id="welcome">
+    <p>
+      <i class="fa fa-chevron-left"></i>
+      <strong>PPP: Pyon Pyon Papers</strong>
+      <i class="fa fa-chevron-right"></i>
+    </p>
+    <input size="30" type="text" placeholder="The id of a paper on ACM Digital Library"></input>
+    <button type="submit">Search</button>
+  </div>
+-->
+  <div class="container">
+  </div>
+  <script src="lib/hakuto/index.js"></script>
+</body>
+
+</html>

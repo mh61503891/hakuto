@@ -1,0 +1,5 @@
+require 'hakuto/version'
+require 'hakuto/application'
+require 'hakuto/models'
+require 'hakuto/api/acm'
+require 'hakuto/api/ieee'
