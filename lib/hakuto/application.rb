@@ -11,7 +11,7 @@ module Hakuto
     end
 
     get '/lib/hakuto/index.css' do
-      scss :"style/index"
+      scss :'style/index'
     end
 
     get '/' do
