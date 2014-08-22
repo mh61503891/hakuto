@@ -8,9 +8,9 @@ gem 'data_mapper'
 gem 'dm-sqlite-adapter'
 gem 'thin'
 gem 'rack'
+gem 'sass'
 
 group :development, :test do
-	gem 'sass'
 	gem 'rspec'
 	gem 'pry'
 end
