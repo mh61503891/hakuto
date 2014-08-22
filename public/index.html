@@ -17,16 +17,23 @@
       <i class="fa fa-lg fa-plus ppp-favo" data-id="${id}"></i>
     </div>
     <div class="content">
+      {%if title%}
       <h1 class="title">${title}</h1>
+      {%/if%}
       <table>
         {%if doi%}
-        <tr><th>DOI</th><td><a href="">${doi}</a></td></tr>
+        <tr><th>DOI</th><td><a href="http://dx.doi.org/${doi}" target="_blank">${doi}</a></td></tr>
         {%/if%}
         {%if acm_id%}
-        <tr><th>ACM</th><td><a href="">http://dl.acm.org/citation.cfm?id=${acm_id}</a></td></tr>
+        <tr><th>ACM</th><td><a href="http://dl.acm.org/citation.cfm?id=${acm_id}" target="_blank">http://dl.acm.org/citation.cfm?id=${acm_id}</a></td></tr>
         {%/if%}
       </table>
+      {%if text%}
+      <p class="text">${text}</p>
+      {%/if%}
+      {%if abstract%}
       <p class="abstract">${abstract}</p>
+      {%/if%}
       <table>
         <tr><th>Year</th><td>${year}</td></tr>
         <tr><th>System ID</th><td>${id}</td></tr>
