@@ -117,6 +117,7 @@ DEPENDENCIES
   nokogiri
   pry
   rack
+  rack-test
   rspec
   sass
   sinatra
