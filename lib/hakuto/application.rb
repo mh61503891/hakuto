@@ -1,12 +1,12 @@
 require 'sinatra/base'
 require 'sinatra/json'
 require 'sass'
-require 'hakuto/api'
 
 module Hakuto
   class Application < Sinatra::Base
 
     configure :development do
+      require 'sinatra/reloader'
       register Sinatra::Reloader
     end
 
@@ -18,9 +18,20 @@ module Hakuto
       send_file File.join(settings.public_folder, 'index.html')
     end
 
+    def get_paper
+      if params[:acm_id] && !params[:acm_id].empty?
+        require 'hakuto/api/acm'
+        return Hakuto::API::ACM::Loader.load(params[:acm_id])
+      elsif params[:id] && !params[:id].empty?
+        return Hakuto::Paper.get(params[:id])
+      else
+        raise "params must have :acm_id or :id (#{params})"
+      end
+    end
+
     get '/paper.json' do
       begin
-        @paper = Hakuto::API::Loaders.load(params)
+        @paper = get_paper
         response = {
           id:@paper.id,
           doi:@paper.doi,

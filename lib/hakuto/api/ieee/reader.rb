@@ -1,9 +1,9 @@
 module Hakuto
   module API
     module IEEE
-      class Loader
+      class Reader
         class << self
-          def load(id)
+          def read(id)
             raise NotImplementedError
           end
         end
